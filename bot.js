@@ -16,7 +16,7 @@ function random(max) {
 }*/
 
 function postTweet() {
-    // const b64content = fs.readFileSync('/imagetest.jpg', { encoding: 'base64' })
+    //const b64content = fs.readFileSync('/imagetest.jpg', { encoding: 'base64' })
     // first we must post the media to Twitter 
     T.post('media/upload', { media_url_https: "https://cdn.spacetelescope.org/archives/images/thumb700x/Black_hole04.jpg" }, function (err, data, response) {
       // now we can assign alt text to the media, for use by screen readers and 
