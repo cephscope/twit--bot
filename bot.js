@@ -10,7 +10,7 @@ function random(max) {
 }
 const options = {
     url: "https://cdn.spacetelescope.org/archives/images/thumb700x/Black_hole04.jpg",
-    dest: './image.jpg'                  // Save to /path/to/dest/image.jpg
+    dest: '/Users/modestmusashi/modestmusashi/twitbot/imagetest.jpg'                  // Save to /path/to/dest/image.jpg
   }
   download.image(options)
   .then(({ filename, image }) => {
@@ -27,7 +27,7 @@ const options = {
 }*/
 
 function postTweet() {
-    const b64content = fs.readFileSync('./image.jpg', { encoding: 'base64' })
+    const b64content = fs.readFileSync('/imagetest.jpg', { encoding: 'base64' })
     // first we must post the media to Twitter 
     T.post('media/upload', { media_data: b64content }, function (err, data, response) {
       // now we can assign alt text to the media, for use by screen readers and 
