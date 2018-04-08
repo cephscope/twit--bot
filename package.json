@@ -1,0 +1,14 @@
+{
+  "name": "twitbot",
+  "version": "1.0.0",
+  "description": "a bot that twits",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "twit": "^2.2.9"
+  }
+}
