@@ -16,7 +16,7 @@ function random(max) {
 }*/
 
 function postTweet() {
-    T.post('statuses/update', { status: "h​ttp://jpg.party/" + telePics[random(telePics.length)].src }, function(err, data, response) {
+    T.post('statuses/update', { status: "https://cdn.spacetelescope.org/archives/images/thumb700x/Black_hole04.jpg" }, function(err, data, response) {
         console.log(data)
       });
 }
