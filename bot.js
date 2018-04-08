@@ -15,4 +15,4 @@ function postTweet() {
 }
 
 postTweet()
-(postTweet, 3600000);
+setInterval(postTweet, 3600000);
