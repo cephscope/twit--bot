@@ -15,12 +15,7 @@ function random(max) {
       });
 }*/
 
-function postTweet() {
-    /*var a = $("<a>").attr("href", "https://brew.sh/img/homebrew-256x256.png").attr("download", "img.png").appendTo("body");
-
-a[0].click();
-
-a.remove();*/
+function postTweet() {/*
     const b64content = fs.readFileSync('./brew.png', { encoding: 'base64' })
     // first we must post the media to Twitter 
     T.post('media/upload', { media_data: b64content }, function (err, data, response) {
@@ -41,6 +36,10 @@ a.remove();*/
         }
       })
     })   
+*/
+T.post('statuses/update', { status: "https://i.imgur.com/DzTVuk5.jpg" }, function(err, data, response) {
+    console.log(data)
+  });
 }
 
 postTweet()
