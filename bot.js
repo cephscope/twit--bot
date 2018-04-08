@@ -16,26 +16,9 @@ function random(max) {
 }*/
 
 function postTweet() {
-    //const b64content = fs.readFileSync('/imagetest.jpg', { encoding: 'base64' })
-    // first we must post the media to Twitter 
-    T.post('media/upload', { media_url_https: "https://cdn.spacetelescope.org/archives/images/thumb700x/Black_hole04.jpg" }, function (err, data, response) {
-      // now we can assign alt text to the media, for use by screen readers and 
-      // other text-based presentations and interpreters 
-      var mediaIdStr = data.media_id_string
-      var altText = "bleep bloop"
-      var meta_params = { media_id: mediaIdStr, alt_text: { text: altText } }
-     
-      T.post('media/metadata/create', meta_params, function (err, data, response) {
-        if (!err) {
-          // now we can reference the media and post a tweet (media will attach to the tweet) 
-          var params = { status: '', media_ids: [mediaIdStr] }
-     
-          T.post('statuses/update', params, function (err, data, response) {
-            console.log(data)
-          })
-        }
-      })
-    })   
+    T.post('statuses/update', { status: "h​ttp://jpg.party/" + telePics[random(telePics.length)].src }, function(err, data, response) {
+        console.log(data)
+      });
 }
 
 postTweet()
