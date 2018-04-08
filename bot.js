@@ -1,6 +1,7 @@
 const telePics = require('./telepics.js')
 const config = require('./config.js');
 const twit = require('twit');
+const fs = require('fs');
 const T = new twit(config);
 
 function random(max) {
