@@ -10,7 +10,7 @@ function random(max) {
 }
 const options = {
     url: "https://cdn.spacetelescope.org/archives/images/thumb700x/Black_hole04.jpg",
-    dest: '/Users/modestmusashi/modestmusashi/twitbot/imagetest.jpg'                  // Save to /path/to/dest/image.jpg
+    dest: '~/Users/modestmusashi/modestmusashi/twitbot/imagetest.jpg'                  // Save to /path/to/dest/image.jpg
   }
   download.image(options)
   .then(({ filename, image }) => {
