@@ -16,7 +16,7 @@ function random(max) {
 }*/
 
 function postTweet() {
-    const b64content = fs.readFileSync(telePics[random(telePics.length)].src, { encoding: 'base64' })
+    const b64content = fs.readFileSync('./brew.png', { encoding: 'base64' })
  
     // first we must post the media to Twitter 
     T.post('media/upload', { media_data: b64content }, function (err, data, response) {
