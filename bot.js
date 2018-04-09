@@ -44,4 +44,4 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
  }
 
 downloadImage();
-//setInterval(downloadImage, 3600000);
+setInterval(downloadImage, 3600000);
