@@ -34,7 +34,7 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
 }
 
 options = {
-    url: 'https://cdn.spacetelescope.org/archives/images/thumb700x/Black_hole04.jpg',
+    url: telePics[random(telePics.length)].src,
     dest: '/Users/modestmusashi/modestmusashi/twitimg/image.jpg'        // Save to /path/to/dest/photo.jpg
   }
    
