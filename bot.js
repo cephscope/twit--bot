@@ -32,12 +32,15 @@ options = {
     url: telePics[random(telePics.length)].src,
     dest: '/Users/modestmusashi/modestmusashi/twitimg/image.jpg'
   }
-   
-  download.image(options)
+ function downloadImage() {
+    download.image(options)
     .then(({ filename, image }) => {
       console.log('File saved to', filename)
       postTweet();
     }).catch((err) => {
       throw err
     })
-setInterval(download, 3600000);
+ }
+
+downloadImage();
+setInterval(downloadImage, 3600000);
