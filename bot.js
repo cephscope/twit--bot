@@ -11,7 +11,7 @@ function random(max) {
 
 options = {
     url: 'https://cdn.spacetelescope.org/archives/images/thumb700x/Black_hole04.jpg',
-    dest: '/Users/modestmusashi/modestmusashi/twitbot/image.jpg'        // Save to /path/to/dest/photo.jpg
+    dest: '/Users/modestmusashi/modestmusashi/twitimg/image.jpg'        // Save to /path/to/dest/photo.jpg
   }
    
   download.image(options)
@@ -29,7 +29,7 @@ options = {
 }*/
 
 function postTweet() {
-    var b64content = fs.readFileSync('./image.jpg', { encoding: 'base64' })
+    var b64content = fs.readFileSync('/Users/modestmusashi/modestmusashi/twitimg/image.jpg', { encoding: 'base64' })
  
 // first we must post the media to Twitter 
 T.post('media/upload', { media_data: b64content }, function (err, data, response) {
