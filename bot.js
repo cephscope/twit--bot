@@ -28,11 +28,12 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
 })
 }
 
-options = {
-    url: telePics[random(telePics.length)].src,
-    dest: '/Users/modestmusashi/modestmusashi/twitimg/image.jpg'
-  }
+
  function downloadImage() {
+    options = {
+        url: telePics[random(telePics.length)].src,
+        dest: '/Users/modestmusashi/modestmusashi/twitimg/image.jpg'
+      }
     download.image(options)
     .then(({ filename, image }) => {
       console.log('File saved to', filename)
@@ -43,4 +44,4 @@ options = {
  }
 
 downloadImage();
-setInterval(downloadImage, 3600000);
+//setInterval(downloadImage, 3600000);
