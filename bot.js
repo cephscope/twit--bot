@@ -9,25 +9,6 @@ function random(max) {
    return Math.floor(Math.random() * Math.floor(max));
 }
 
-options = {
-    url: 'https://cdn.spacetelescope.org/archives/images/thumb700x/Black_hole04.jpg',
-    dest: '/Users/modestmusashi/modestmusashi/twitimg/image.jpg'        // Save to /path/to/dest/photo.jpg
-  }
-   
-  download.image(options)
-    .then(({ filename, image }) => {
-      console.log('File saved to', filename)
-    }).catch((err) => {
-      throw err
-    })
-//const newStatus = telePics[random(telePics.length)].src;
-
-/*function postTweet() {
-    T.post('statuses/update', { status: telePics[random(telePics.length)].src }, function(err, data, response) {
-        console.log(data)
-      });
-}*/
-
 function postTweet() {
     var b64content = fs.readFileSync('/Users/modestmusashi/modestmusashi/twitimg/image.jpg', { encoding: 'base64' })
  
@@ -52,5 +33,26 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
 })
 }
 
-postTweet()
-setInterval(postTweet, 3600000);
+options = {
+    url: 'https://cdn.spacetelescope.org/archives/images/thumb700x/Black_hole04.jpg',
+    dest: '/Users/modestmusashi/modestmusashi/twitimg/image.jpg'        // Save to /path/to/dest/photo.jpg
+  }
+   
+  download.image(options)
+    .then(({ filename, image }) => {
+      console.log('File saved to', filename)
+      postTweet();
+    }).catch((err) => {
+      throw err
+    })
+//const newStatus = telePics[random(telePics.length)].src;
+
+/*function postTweet() {
+    T.post('statuses/update', { status: telePics[random(telePics.length)].src }, function(err, data, response) {
+        console.log(data)
+      });
+}*/
+
+
+
+//setInterval(download, 3600000);
