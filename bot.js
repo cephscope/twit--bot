@@ -11,18 +11,13 @@ function random(max) {
 
 function postTweet() {
     var b64content = fs.readFileSync('/Users/modestmusashi/modestmusashi/twitimg/image.jpg', { encoding: 'base64' })
- 
-// first we must post the media to Twitter 
 T.post('media/upload', { media_data: b64content }, function (err, data, response) {
-  // now we can assign alt text to the media, for use by screen readers and 
-  // other text-based presentations and interpreters 
   var mediaIdStr = data.media_id_string
   var altText = "bleep bloop"
   var meta_params = { media_id: mediaIdStr, alt_text: { text: altText } }
  
   T.post('media/metadata/create', meta_params, function (err, data, response) {
-    if (!err) {
-      // now we can reference the media and post a tweet (media will attach to the tweet) 
+    if (!err) { 
       var params = { status: '', media_ids: [mediaIdStr] }
  
       T.post('statuses/update', params, function (err, data, response) {
@@ -35,7 +30,7 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
 
 options = {
     url: telePics[random(telePics.length)].src,
-    dest: '/Users/modestmusashi/modestmusashi/twitimg/image.jpg'        // Save to /path/to/dest/photo.jpg
+    dest: '/Users/modestmusashi/modestmusashi/twitimg/image.jpg'
   }
    
   download.image(options)
@@ -45,14 +40,4 @@ options = {
     }).catch((err) => {
       throw err
     })
-//const newStatus = telePics[random(telePics.length)].src;
-
-/*function postTweet() {
-    T.post('statuses/update', { status: telePics[random(telePics.length)].src }, function(err, data, response) {
-        console.log(data)
-      });
-}*/
-
-
-
-//setInterval(download, 3600000);
+setInterval(download, 3600000);
