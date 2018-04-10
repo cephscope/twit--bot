@@ -1,6 +1,7 @@
 const telePics = require('./telepics.js');
 const download = require('image-downloader');
 const config = require('./config.js');
+const cache = require('/Users/modestmusashi/modestmusashi/twitimg/checkCache.js')
 const twit = require('twit');
 const fs = require('fs');
 const T = new twit(config);
@@ -31,7 +32,7 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
 
  function downloadImage() {
     options = {
-        url: telePics[random(telePics.length)].src,
+        url: nextUrl,
         dest: '/Users/modestmusashi/modestmusashi/twitimg/image.jpg'
       }
     download.image(options)
@@ -43,5 +44,19 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
     })
  }
 
-downloadImage();
-setInterval(downloadImage, 3600000);
+ function checkCache() {
+    const fetchedUrl = telePics[random(telePics.length)].src;
+    do {
+        if (cache.includes(fetchedUrl)) {
+            console.log("image already tweeted, fetching new one");
+            checkCache();
+        } else {
+            cache.push(fetchedUrl);
+            const nextUrl = fetchedUrl;
+            downloadImage();
+        }
+    } while (cache.length <= telePics.length);
+}
+
+checkCache();
+setInterval(checkCache, 3600000);
