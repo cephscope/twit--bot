@@ -30,32 +30,33 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
 }
 
 
+function checkCache() {
+        if (cache.includes(options.url)) {
+            console.log("image already tweeted, fetching new one");
+            downloadImage();
+        } else {
+            cache.push(options.url);
+            postTweet();
+        }
+}
+
+
  function downloadImage() {
     options = {
-        url: fetchedUrl,
+        url: telePics[random(telePics.length)].src,
         dest: '/Users/modestmusashi/modestmusashi/twitimg/image.jpg'
       }
     download.image(options)
     .then(({ filename, image }) => {
       console.log('File saved to', filename)
-      postTweet();
+      do {
+        checkCache();
+      } while (cache.length < telePics.length);
     }).catch((err) => {
       throw err
     })
  }
 
- function checkCache() {
-    const fetchedUrl = telePics[random(telePics.length)].src;
-    do {
-        if (cache.includes(fetchedUrl)) {
-            console.log("image already tweeted, fetching new one");
-            checkCache();
-        } else {
-            cache.push(fetchedUrl);
-            downloadImage();
-        }
-    } while (cache.length <= telePics.length);
-}
 
-checkCache();
-setInterval(checkCache, 3600000);
+downloadImage();
+setInterval(downloadImage, 3600000);
