@@ -32,7 +32,7 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
 
  function downloadImage() {
     options = {
-        url: nextUrl,
+        url: fetchedUrl,
         dest: '/Users/modestmusashi/modestmusashi/twitimg/image.jpg'
       }
     download.image(options)
@@ -52,7 +52,6 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
             checkCache();
         } else {
             cache.push(fetchedUrl);
-            const nextUrl = fetchedUrl;
             downloadImage();
         }
     } while (cache.length <= telePics.length);
