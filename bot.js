@@ -38,6 +38,7 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
     download.image(options)
     .then(({ filename, image }) => {
       console.log('File saved to', filename)
+      const fetchedUrl = options.url;
       do {
         checkCache();
       } while (cache.length < telePics.length);
@@ -47,11 +48,11 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
  }
 
  function checkCache() {
-    if (cache.includes(options.url)) {
+    if (cache.includes(fetchedUrl)) {
         console.log("image already tweeted, fetching new one");
         downloadImage();
     } else {
-        cache.push(options.url);
+        cache.push(fetchedUrl);
         postTweet();
     }
 }
