@@ -6,6 +6,8 @@ const twit = require('twit');
 const fs = require('fs');
 const T = new twit(config);
 
+const cacheArr = [];
+
 function random(max) {
    return Math.floor(Math.random() * Math.floor(max));
 }
@@ -39,25 +41,25 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
     .then(({ filename, image }) => {
       console.log('File saved to', filename)
       postTweet();
-      /*const fetchedUrl = options.url;
+      const fetchedUrl = options.url;
       do {
         checkCache();
-      } while (cache.length < telePics.length);*/
+      } while (cacheArr.length < telePics.length);
     }).catch((err) => {
       throw err
     })
  }
 
- /*function checkCache() {
-    if (cache.includes(fetchedUrl)) {
+ function checkCache() {
+    if (cacheArr.includes(fetchedUrl)) {
         console.log("image already tweeted, fetching new one");
         downloadImage();
     } else {
-        cache.push(fetchedUrl);
+        cacheArr.push(fetchedUrl);
         postTweet();
     }
-}*/
+}
 
 
-downloadImage();
-setInterval(downloadImage, 3600000);
+checkCache();
+//setInterval(downloadImage, 3600000);
