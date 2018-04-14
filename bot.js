@@ -6,7 +6,7 @@ const twit = require('twit');
 const fs = require('fs');
 const T = new twit(config);
 
-const cacheArr = [];
+let cacheArr = [];
 
 function random(max) {
    return Math.floor(Math.random() * Math.floor(max));
