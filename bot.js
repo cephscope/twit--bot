@@ -61,5 +61,5 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
 }
 
 
-checkCache();
+downloadImage();
 //setInterval(downloadImage, 3600000);
