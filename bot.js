@@ -1,13 +1,13 @@
 const telePics = require('./telepics.js');
 const download = require('image-downloader');
 const config = require('./config.js');
-//const cache = require('/Users/modestmusashi/modestmusashi/twitimg/checkCache.js')
+const cache = require('/Users/modestmusashi/modestmusashi/twitimg/checkCache.js')
 const twit = require('twit');
 const fs = require('fs');
 const T = new twit(config);
 
-let cacheArr = [];
-console.log(cacheArr.push('hello'));
+//let cacheArr = [];
+console.log(cache.push('hello'));
 
 function random(max) {
    return Math.floor(Math.random() * Math.floor(max));
