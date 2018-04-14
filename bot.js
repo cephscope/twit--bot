@@ -40,8 +40,6 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
     download.image(options)
     .then(({ filename, image }) => {
       console.log('File saved to', filename)
-      postTweet();
-      const fetchedUrl = options.url;
       do {
         checkCache();
       } while (cacheArr.length < telePics.length);
