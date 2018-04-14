@@ -12,7 +12,7 @@ function random(max) {
 }
 
 function postTweet() {
-    var b64content = fs.readFileSync('/path/to/image.jpg', { encoding: 'base64' })
+    var b64content = fs.readFileSync('/Users/modestmusashi/modestmusashi/twitimg/image.jpg', { encoding: 'base64' })
 T.post('media/upload', { media_data: b64content }, function (err, data, response) {
   var mediaIdStr = data.media_id_string
   var altText = "bleep bloop"
@@ -34,7 +34,7 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
  function downloadImage() {
     options = {
         url: telePics[random(telePics.length)].src,
-        dest: '/destintion/of/image.jpg'
+        dest: '/Users/modestmusashi/modestmusashi/twitimg/image.jpg'
       }
     download.image(options)
     .then(({ filename, image }) => {
