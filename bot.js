@@ -1,13 +1,11 @@
 const telePics = require('./telepics.js');
 const download = require('image-downloader');
 const config = require('./config.js');
-const cache = require('/Users/modestmusashi/modestmusashi/twitimg/checkCache.js')
 const twit = require('twit');
 const fs = require('fs');
 const T = new twit(config);
 
-//let cacheArr = [];
-console.log(cache.push('hello'));
+// const cache = []; not working
 
 function random(max) {
    return Math.floor(Math.random() * Math.floor(max));
@@ -41,24 +39,25 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
     download.image(options)
     .then(({ filename, image }) => {
       console.log('File saved to', filename)
-      /*do {
+      postTweet(); // this would happen in checkCache() if it was working
+    /*  do {                                           Commented out because it's broken
         checkCache();
-      } while (cache.length != telePics.length);*/
+      } while (cache.length != telePics.length); */
     }).catch((err) => {
       throw err
     })
  }
 
- /*function checkCache() {
-    if (cache.includes(telePics[random(telePics.length)].src)) {
+ /*function checkCache() {         Commented out because it's broken
+    if (cache.includes(options.url)) {
         console.log("image already tweeted, fetching new one");
         downloadImage();
     } else {
-        cache.push("hello");
+        cache.push(options.url);
         postTweet();
     }
 }*/
 
 
 downloadImage();
-//setInterval(downloadImage, 3600000);
+setInterval(downloadImage, 3600000);
