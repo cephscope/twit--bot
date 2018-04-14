@@ -49,11 +49,11 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
  }
 
  function checkCache() {
-    if (cacheArr.includes(options.url)) {
+    if (cacheArr.includes("hello")) {
         console.log("image already tweeted, fetching new one");
         downloadImage();
     } else {
-        cacheArr.push(options.url);
+        cacheArr.push("hello");
         postTweet();
     }
 }
