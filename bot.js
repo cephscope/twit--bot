@@ -6,7 +6,6 @@ const fs = require('fs');
 const T = new twit(config);
 
 // const cache = []; not working
-const unusedVar = "testt";
 
 function random(max) {
    return Math.floor(Math.random() * Math.floor(max));
